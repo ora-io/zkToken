@@ -1,6 +1,7 @@
 {
   "name": "zk_token",
   "description": "ERC20 monitor based on zkGraph",
+  "type": "module",
   "scripts": {
     "compile-local": "node api/compile.js",
     "setup-local": "node api/setup.js",
@@ -21,7 +22,6 @@
     "format": "prettier --write -c **/*.{js,ts,md}",
     "lint": "prettier -c **/*.{js,ts,md}"
   },
-  "type": "module",
   "dependencies": {
     "@hyperoracle/zkgraph-api": "0.1.6",
     "@hyperoracle/zkgraph-lib": "0.0.8",

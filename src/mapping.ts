@@ -1,6 +1,6 @@
 //@ts-ignore
-import { BigInt, Bytes, Event } from "@hyperoracle/zkgraph-lib";
-import { Monitor } from "./modules/monitor";
+import { Bytes, Event } from "@hyperoracle/zkgraph-lib";
+import { Sentiment } from "./modules/sentiment";
 
 /**
  * Executes the event handling logic for the given array of events.
@@ -9,6 +9,6 @@ import { Monitor } from "./modules/monitor";
  * @return {Bytes} - The result of running the event handling logic.
  */
 export function handleEvents(events: Event[]): Bytes {
-  const monitor = new Monitor(events);
-  return monitor.run();
+  const sentiment = new Sentiment(events);
+  return sentiment.toBytes();
 }

@@ -24,9 +24,9 @@ export class Transfer {
     event: Event,
   ): Transfer {
     const source = changetype<Bytes>(event.data);
-    const token = event.address;
-    const from = event.topic1;
-    const to = event.topic2;
+    const token = Address.fromBytes(event.address);
+    const from = Address.fromBytes(event.topic1.slice(12,32));
+    const to = Address.fromBytes(event.topic2.slice(12,32));
     const value = BigInt.fromBytes(source.slice(0,32));
 
     return new Transfer(token, from, to, value);
