@@ -1,4 +1,4 @@
-# zkToken
+# zkToken (WIP)
 
 zkToken is a ERC20 Monitor based on [zkGraph](https://www.hyperoracle.io). It used to monitor whether there is any selling or pumping behavior in the whale account, and then issue an alert signal.
 
