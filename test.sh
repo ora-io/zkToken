@@ -4,4 +4,4 @@
 # Then run `sh test.sh`
 
 npm run whale
-npm run compile-local && npm run exec-local -- 18370576
+npm run compile-local && npm run exec-local -- 18376445
