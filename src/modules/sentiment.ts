@@ -3,9 +3,11 @@ import {
   Event,
   BigInt,
   Bytes,
+  Address
 } from "@hyperoracle/zkgraph-lib";
 import { Transfer } from "../events/transfer";
 import { whaleAddress } from "../../static/whale";
+import { tokens } from "../../static/tokens";
 import { isFollowed } from "../utils/filter";
 import { Result } from "../types/result";
 import { Signal } from "../types/signal";
@@ -18,6 +20,9 @@ export class Sentiment {
   constructor(events: Event[]) {
     this.events = events;
     this.signals = [];
+    for (let i = 0; i < tokens.length; i++) {
+      this.signals.push(Signal.Neutral);
+    }
 
     for (let i = 0; i < this.events.length; i++) {
       const event = this.events[i];
@@ -29,7 +34,7 @@ export class Sentiment {
 
       // determine market signal
       const signal = this.calcSignal(transfer, balance);
-      this.signals.push(signal);
+      this.setSignalOfToken(event.address, signal);
     }
   }
 
@@ -41,8 +46,13 @@ export class Sentiment {
     return Signal.Neutral;
   }
 
+  setSignalOfToken(tokenAddress: Bytes, signal: Signal): void {
+    const token = Address.fromBytes(tokenAddress).toHexString();
+    const tokenIndex = tokens.indexOf(token);
+    this.signals[tokenIndex] = signal;
+  }
+
   toBytes(): Bytes {
-    if (this.signals.length == 0) return Bytes.empty();
     const result = new Result(this.signals);
     return result.toBytes();
   }

@@ -8,11 +8,9 @@ export class Result {
   }
 
   public toBytes(): Bytes {
-    let result = Bytes.fromI32(this.signals.length);
+    let result: Bytes = Bytes.fromHexString("0x3b3937c9");
     for(let i = 0; i < this.signals.length; i++){
       const signal = this.signals[i];
-      // const balanceString = signal.toString(16);
-      // const balanceBytes = Bytes.fromHexString(balanceString);
       const balanceBytes = Bytes.fromI32(signal);
       result = Bytes.fromByteArray(result.concat(balanceBytes));
     }
