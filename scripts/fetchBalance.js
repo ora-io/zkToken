@@ -28,11 +28,13 @@ async function main() {
   const balances = await fetchBalancesOf(whale);
 
   const currentPath = process.cwd();
-  const filePath = path.join(currentPath, `./static/balances.ts`);
+  const filePath = path.join(currentPath, `./static/whale.ts`);
   const jsonString = JSON.stringify(balances);
   const prefix = "export const balances: string[] = ";
-  fs.writeFileSync(filePath, prefix + jsonString);
-  console.log(`${whales[i]} balance written`);
+  const firstLinePayload = prefix + jsonString;
+  const secondLinePayload = `\nexport const whaleAddress: string = \"${whale}\";`
+  fs.writeFileSync(filePath, firstLinePayload + secondLinePayload);
+  console.log(`${whale} balance written`);
 }
 
 main();
