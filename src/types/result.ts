@@ -8,7 +8,8 @@ export class Result {
   }
 
   public toBytes(): Bytes {
-    let result: Bytes = Bytes.fromHexString("0x3b3937c9");
+    // function operate(bytes calldata signals) public {}
+    let result: Bytes = Bytes.fromHexString("0x53ad370d");
     for(let i = 0; i < this.signals.length; i++){
       const signal = this.signals[i];
       const balanceBytes = Bytes.fromI32(signal);
