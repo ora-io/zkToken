@@ -1,2 +1,2 @@
-export const balances: string[] = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
-export const whaleAddress: string = "0x178567E102A5Ff76B8A29A37fdD00F4209eccEB3";
+export const balances: string[] = ["0","0","0","0","0","0","0","0","8631146064767","0","169634920577797179944782","0","0","191019582965498440556262","401456332488","3428329","27900603309397371254130","0"]
+export const whaleAddress: string = "0x974caa59e49682cda0ad2bbe82983419a2ecc400";
