@@ -21,6 +21,7 @@
     "whale": "node scripts/fetchBalance.js"
   },
   "dependencies": {
+    "@hyperoracle/zkgraph-api": "^1.0.3",
     "@hyperoracle/zkgraph-lib": "1.0.1",
     "web3": "^4.3.0"
   },

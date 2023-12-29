@@ -21,22 +21,23 @@ export class Sentiment {
 
   constructor(blocks: Block[]) {
     const events: Event[] = blocks[0].events;
+
     this.signals = [];
-    for (let i = 0; i < tokens.length; i++) {
-      this.signals.push(Signal.Neutral);
-    }
+    // for (let i = 0; i < tokens.length; i++) {
+    //   this.signals.push(Signal.Neutral);
+    // }
 
     for (let i = 0; i < events.length; i++) {
       const event = events[i]; // prove success
       const transfer = Transfer.fromEvent(event); // prove failed
-      // Filter out non-followed tokens
-      const follow = isFollowed(transfer);
-      if(follow == false) continue; // prove failed
-      const balance = getBalanceFromTokenAddressBytes(event.address);
+      // // Filter out non-followed tokens
+      let follow = isFollowed(transfer); // 问题出现在这个函数!
+      // if(follow == false) continue; // prove failed
+      // const balance = getBalanceFromTokenAddressBytes(event.address);
 
-      // determine market signal
-      const signal = this.calcSignal(transfer, balance);
-      this.setSignalOfToken(event.address, signal);
+      // // determine market signal
+      // const signal = this.calcSignal(transfer, balance);
+      // this.setSignalOfToken(event.address, signal);
     }
   }
 
